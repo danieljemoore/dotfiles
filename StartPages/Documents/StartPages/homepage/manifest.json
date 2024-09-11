@@ -1,0 +1,23 @@
+{
+	"manifest_version": 3,
+	"name": "New tab Startpage",
+	"version": "1.0.0",
+	"description": "Custom new tab startpage.",
+	"permissions": [
+		"active Tab"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"bookmarks.js",
+				"script.js"
+			]
+		}
+	],
+	"chrome_url_overrides": {
+		"newtab": "start.html"
+	}
+}

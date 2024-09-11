@@ -1,0 +1,30 @@
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
+
+auto-reload yes
+reload-time 30
+reload-threads 100
+
+highlight feedlist "---.*---" color99 default bold
+highlight feedlist "_.*_" color153 default bold
+highlight feedlist ">.*" color214 default bold
+highlight feedlist "~.*" color105 default bold
+highlight feedlist "===.*===" color57 default bold
+
+
+highlight feedlist ".*0/0.." default default invis
+
+# externel browser
+browser "w3m -o auto_image=TRUE"
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
