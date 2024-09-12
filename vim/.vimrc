@@ -1,4 +1,7 @@
 set history=500
+set encoding=utf-8
+set updatetime=300
+set signcolumn=yes
 
 " set numbers on the side
 set number
@@ -87,6 +90,9 @@ call plug#begin()
     Plug 'rhysd/vim-healthcheck'
   endif
   Plug 'mattn/vim-lsp-settings'
+  Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+  Plug 'junegunn/vim-github-dashboard'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme nord
