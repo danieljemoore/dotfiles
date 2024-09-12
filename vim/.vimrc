@@ -99,6 +99,9 @@ set laststatus=2
 " Format the status line
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ %=%l:%c
 
+""""""""""""""""""""""""""""""
+" => Vim-Plug
+""""""""""""""""""""""""""""""
 let data_dir = has('vim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
