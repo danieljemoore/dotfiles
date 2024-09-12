@@ -1,4 +1,38 @@
 return {
+  require 'layers.style',
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      exclude = { filetypes = { 'dashboard' } },
+    },
+  },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
+  {
+    'leon-richardt/comment-highlights.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {},
+    cmd = 'CHToggle',
+    keys = {
+      {
+        '<leader>cc',
+        function()
+          require('comment-highlights').toggle()
+        end,
+        desc = 'Toggle comment highlighting',
+      },
+    },
+  },
+  --[[{
+    'tribela/transparent.nvim',
+    event = 'VimEnter',
+    config = true,
+  },]]
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
