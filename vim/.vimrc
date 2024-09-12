@@ -82,6 +82,11 @@ call plug#begin()
   Plug 'bfrg/vim-cpp-modern'
   Plug 'airblade/vim-gitgutter'
   Plug 'wincent/terminus'
+  Plug 'prabirshrestha/vim-lsp'
+  if !has('vim')
+    Plug 'rhysd/vim-healthcheck'
+  endif
+  Plug 'mattn/vim-lsp-settings'
 call plug#end()
 
 colorscheme nord
