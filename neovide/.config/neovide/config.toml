@@ -1,4 +1,7 @@
+frame = "none"
+
 [font]
 normal = ["JetBrainsMono Nerd Font"]
 size = 12
-edgint = "antialias"
+hinting = "full"
+edging = "antialias"
