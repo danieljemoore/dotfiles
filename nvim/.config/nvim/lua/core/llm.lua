@@ -1,5 +1,6 @@
 return {
   'github/copilot.vim',
+
   {
     'danieljemoore/model.nvim',
     cmd = { 'Model', 'Mchat' },
@@ -9,6 +10,7 @@ return {
     ft = 'mchat',
     keys = { { '<leader>h', ':Model<cr>', mode = 'v' } },
   },
+
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
@@ -148,6 +150,7 @@ return {
       },
     },
   },
+
   {
     'chottolabs/kznllm.nvim',
     dependencies = {
