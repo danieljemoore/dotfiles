@@ -28,14 +28,30 @@ set ruler
 
 " Height of the command bar
 set cmdheight=1
+" Highlight search result
+set hlsearch
+" Makes search act like search in modern browsers
+set incsearch
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+" For regular expressions turn magic on
+set magic
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+" Add a bit extra margin to the left
+set foldcolumn=1
 
 "=> Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 
 set background=dark
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Text, Tab, and Indent Related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Use spaces instead of tabs
@@ -48,12 +64,16 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=>Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <C-space> ?
+map <leader>/ /
+map <leader>? ?
 "Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 " Linebreak on 500 characters
@@ -70,6 +90,15 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ %=%l:%c
+
 let data_dir = has('vim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -78,20 +107,29 @@ endif
 
 call plug#begin()
   Plug 'tpope/vim-sensible'
+  Plug 'wincent/terminus'
+
   Plug 'nordtheme/vim'
+
   Plug 'preservim/nerdtree'
+
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+
   Plug 'bfrg/vim-cpp-modern'
+
   Plug 'airblade/vim-gitgutter'
-  Plug 'wincent/terminus'
   Plug 'prabirshrestha/vim-lsp'
+
   if !has('vim')
     Plug 'rhysd/vim-healthcheck'
   endif
   Plug 'mattn/vim-lsp-settings'
+
   Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+
   Plug 'junegunn/vim-github-dashboard'
+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
