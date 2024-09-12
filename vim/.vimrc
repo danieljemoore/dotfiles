@@ -109,33 +109,58 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-  Plug 'tpope/vim-sensible'
-  Plug 'wincent/terminus'
-
-  Plug 'nordtheme/vim'
-
-  Plug 'preservim/nerdtree'
-
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-
-  Plug 'bfrg/vim-cpp-modern'
-
-  Plug 'airblade/vim-gitgutter'
-  Plug 'prabirshrestha/vim-lsp'
-
   if !has('vim')
     Plug 'rhysd/vim-healthcheck'
   endif
-  Plug 'mattn/vim-lsp-settings'
+"""
+"Pre-Config
+"""
+  Plug 'tpope/vim-sensible'
+  Plug 'wincent/terminus'
+"""
+"UI
+"""
+  Plug 'mhinz/vim-startify'
+  Plug 'nordtheme/vim'
 
   Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+  Plug 'preservim/nerdtree'
+"""
+"fzf/telescope
+"""
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
+"""
+"GIT
+"""
   Plug 'junegunn/vim-github-dashboard'
+  Plug 'airblade/vim-gitgutter'
 
+"""
+"Completion
+"""
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
 
+"""
+"LSP  
+"""
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'bfrg/vim-cpp-modern'
+call plug#end()
+" Text with figlet for starting page
+"let g:startify_custom_header = startify#pad(split(system('figlet -w 100 VIM2020'), '\n'))
+" Text from file for starting page
+let g:startify_custom_header = startify#pad(readfile('.vim/ascii-art/cat-ascii.txt'))
+
+let g:startify_lists = [ { 'type': 'files',     'header': ['   MRU']            }, { 'type': 'commands',  'header': ['   Commands']       }, ]
+
+"        { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+"        { 'type': 'sessions',  'header': ['   Sessions']       },
+"        { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+"        { 'type': function('s:gitModified'),  'header': ['   git modified']},
+"        { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
 colorscheme nord
 
 "Dissable function highlighting (affects both C and C++ files)
