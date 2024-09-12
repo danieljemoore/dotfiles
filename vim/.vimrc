@@ -152,9 +152,22 @@ call plug#end()
 " Text with figlet for starting page
 "let g:startify_custom_header = startify#pad(split(system('figlet -w 100 VIM2020'), '\n'))
 " Text from file for starting page
-let g:startify_custom_header = startify#pad(readfile('.vim/ascii-art/cat-ascii.txt'))
+function! CenterTime()
+    let width = &columns
+    let time_str = strftime('%A %F %H:%M:%S')
+    let padding = repeat(' ', (width - len(time_str)) / 2)
+    return [padding . time_str]
+endfunction
+let g:newline = [' ']
+let g:startify_custom_header =  startify#pad(readfile('.vim/ascii-art/cat-ascii.txt')) + g:newline + CenterTime()
+" Read ~/.NERDTreeBookmarks file and takes its second column
+function! s:nerdtreeBookmarks()
+    let bookmarks = systemlist("cut -d' ' -f 2- ~/.NERDTreeBookmarks")
+    let bookmarks = bookmarks[0:-2] " Slices an empty last line
+    return map(bookmarks, "{'line': v:val, 'path': v:val}")
+endfunction
 
-let g:startify_lists = [ { 'type': 'files',     'header': ['   MRU']            }, { 'type': 'commands',  'header': ['   Commands']       }, ]
+let g:startify_lists = [ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   Bookmarks']}, { 'type': 'files',     'header': ['   Recent Files']            }, { 'type': 'commands',  'header': ['   Commands']       }, ]
 
 "        { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
 "        { 'type': 'sessions',  'header': ['   Sessions']       },

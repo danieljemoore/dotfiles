@@ -10,9 +10,11 @@ return {
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       --[
-      require('nord').setup {
-        transparent = true,
-      }
+      if type '_G:neovide' ~= 'nil' then
+        require('nord').setup {
+          transparent = true,
+        }
+      end
       --]]
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
