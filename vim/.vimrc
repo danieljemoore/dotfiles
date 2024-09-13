@@ -158,8 +158,12 @@ function! CenterTime()
     let padding = repeat(' ', (width - len(time_str)) / 2)
     return [padding . time_str]
 endfunction
+function! CenterAsciiArt(lines)
+    let width = &columns
+    return map(a:lines, {_, line -> repeat('     ', (width - len(line)) / 3) . line})
+endfunction
 let g:newline = [' ']
-let g:startify_custom_header =  startify#pad(readfile('.vim/ascii-art/cat-ascii.txt')) + g:newline + CenterTime()
+let g:startify_custom_header =  startify#pad(CenterAsciiArt(readfile('.vim/ascii-art/cat-ascii.txt'))) + g:newline + CenterTime()
 " Read ~/.NERDTreeBookmarks file and takes its second column
 function! s:nerdtreeBookmarks()
     let bookmarks = systemlist("cut -d' ' -f 2- ~/.NERDTreeBookmarks")
