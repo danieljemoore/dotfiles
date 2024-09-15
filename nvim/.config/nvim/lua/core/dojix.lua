@@ -130,6 +130,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.filetype.add {
+  extension = { mdx = 'mdx' },
+}
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
