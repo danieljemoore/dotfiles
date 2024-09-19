@@ -114,6 +114,7 @@ return {
 
     require 'layers.editor.notebook',
     require 'core.llm',
+    require 'layers.editor.tex',
     -- ui
     require 'layers.ui',
 

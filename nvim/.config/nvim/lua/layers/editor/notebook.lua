@@ -160,6 +160,8 @@ return {
           end
         end,
       })
+      --[[
+      
       -- change the configuration when editing a python file
       vim.api.nvim_create_autocmd('BufEnter', {
         pattern = '*.py',
@@ -176,6 +178,8 @@ return {
           end
         end,
       })
+
+     --]]
 
       -- Undo those config changes when we go back to a markdown or quarto file
       vim.api.nvim_create_autocmd('BufEnter', {
