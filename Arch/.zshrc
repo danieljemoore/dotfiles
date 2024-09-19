@@ -7,6 +7,27 @@ PROMPT='%F{yellow}%n%f%F{white}@%f%F{cyan}%*%f %F{green}%~%f %F{white}%#%f '
 autoload -Uz compinit promptinit
 compinit
 promptinit
+#
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DEFAULT_OPTS='--tmux bottom,90%,40% --layout reverse --border top'
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
 #<<< zsh auto-completion and themes <<<
 #
 #>>> zsh shell options >>>
@@ -101,6 +122,5 @@ export PATH="/usr/lib/luajit-2.1.0-beta3:$PATH"
 # >>> API Keys >>>
 # --- LLMS --- 
 
-# --- Stripe ---
 # <<< API Keys <<<
 #
