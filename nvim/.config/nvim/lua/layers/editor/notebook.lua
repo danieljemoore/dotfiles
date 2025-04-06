@@ -54,7 +54,7 @@ return {
         end,
       },
     },
-    ft = { 'quarto', 'markdown', 'norg' },
+    ft = { 'quarto', 'norg' },
     config = function()
       local quarto = require 'quarto'
       quarto.setup {
@@ -183,7 +183,7 @@ return {
 
       -- Undo those config changes when we go back to a markdown or quarto file
       vim.api.nvim_create_autocmd('BufEnter', {
-        pattern = { '*.qmd', '*.md', '*.ipynb' },
+        pattern = { '*.qmd', '*.ipynb' },
         callback = function(e)
           if string.match(e.file, '.otter.') then
             return
@@ -246,6 +246,7 @@ return {
       window_overlap_clear_ft_ignore = { 'cmp_menu', 'cmp_docs', '' },
     },
   },
+  --[[
   {
     'GCBallesteros/jupytext.nvim',
     opts = {
@@ -257,5 +258,6 @@ return {
         },
       },
     },
-  },
+  },]]
+  --
 }

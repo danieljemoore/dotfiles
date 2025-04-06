@@ -166,6 +166,7 @@ return {
         gopls = {},
         pyright = {},
         -- rust_analyzer = {},
+        astro = {},
         html = {},
         cssls = {},
         jsonls = {},
@@ -174,6 +175,7 @@ return {
         nextls = {},
         mdx_analyzer = {},
         texlab = {},
+        markdownlint = {},
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -181,7 +183,7 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        ts_ls = {},
+        --tsserver = {},
         --
 
         lua_ls = {

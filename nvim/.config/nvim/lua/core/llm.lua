@@ -150,7 +150,7 @@ return {
       },
     },
   },
-
+  --[[
   {
     'chottolabs/kznllm.nvim',
     dependencies = {
@@ -241,4 +241,5 @@ return {
       })
     end,
   },
+]]
 }
